@@ -45,7 +45,7 @@
 |6|63|10101001010101010101| |yes|/EVAL|
 |7|255|00010101010101010101| |yes|E/EV|
 |8|0-63|10101000000000000001| |yes|I/OAM2|
-|9|256-319|01101000000000000001| |yes|PAR/O|
+|9|256-319|01101000000000000001| |yes|OBJ_READ|
 |10|0-255|10000000000000000011|yes|yes|/VIS|
 |11|Каждый 0..1|00000000000010100001| |yes|#F/NT|
 |12|Каждый 6..7|00000000000001010000| | |F/TB|
@@ -198,15 +198,15 @@ PCLK:
 
 ## OAM
 
-Поскольку адрес OAM0-7 выдаётся в прямой логике, для битов 2-4 OAM Buffer переставлены выходы рядов, 2 и 6.
+Поскольку адрес OAM0-7 выдаётся в прямой логике, для битов 2-4 OAM Buffer переставлены выходы COLx, 2 и 6.
 
-![pal_oam_row_decoder_tran](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_row_decoder_tran.png)
+![pal_oam_col_decoder_tran](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_col_decoder_tran.png)
 
-![pal_oam_row_outputs1](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_row_outputs1.png)
+![pal_oam_col_outputs1](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_col_outputs1.png)
 
 (NTSC PPU слева, PAL PPU справа)
 
-![pal_oam_row_outputs2](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_row_outputs2.png)
+![pal_oam_col_outputs2](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_col_outputs2.png)
 
 (NTSC PPU слева, PAL PPU справа)
 

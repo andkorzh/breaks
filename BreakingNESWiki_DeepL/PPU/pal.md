@@ -45,7 +45,7 @@ All other parts (Horizontal and vertical FSM logic, register selection circuit, 
 |6|63|10101001010101010101| |yes|/EVAL|
 |7|255|00010101010101010101| |yes|E/EV|
 |8|0-63|10101000000000000001| |yes|I/OAM2|
-|9|256-319|01101000000000000001| |yes|PAR/O|
+|9|256-319|01101000000000000001| |yes|OBJ_READ|
 |10|0-255|10000000000000000011|yes|yes|/VIS|
 |11|Each 0..1|00000000000010100001| |yes|#F/NT|
 |12|Each 6..7|00000000000001010000| | |F/TB|
@@ -198,15 +198,15 @@ And the main difference: instead of the usual W3 Enabler, which is used in the N
 
 ## OAM
 
-Since the OAM address (`OAM0-7`) is issued in direct logic, the outputs of rows 2 and 6 are rearranged for bits 2-4 of the OAM Buffer.
+Since the OAM address (`OAM0-7`) is issued in direct logic, the outputs of columns 2 and 6 are rearranged for bits 2-4 of the OAM Buffer.
 
-![pal_oam_row_decoder_tran](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_row_decoder_tran.png)
+![pal_oam_col_decoder_tran](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_col_decoder_tran.png)
 
-![pal_oam_row_outputs1](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_row_outputs1.png)
+![pal_oam_col_outputs1](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_col_outputs1.png)
 
 (NTSC PPU to the left)
 
-![pal_oam_row_outputs2](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_row_outputs2.png)
+![pal_oam_col_outputs2](/BreakingNESWiki/imgstore/ppu/pal/pal_oam_col_outputs2.png)
 
 (NTSC PPU to the left)
 

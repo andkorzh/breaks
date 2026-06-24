@@ -4,6 +4,8 @@
 
 Логика H/V представляет собой конечный автомат (FSM), который управляет всеми остальными узлами PPU. Схематически это просто набор защелок, по типу "эта защелка активна от 64го до 128го пикселя", значит соответствующая контрольная линия идущая от этой защелки тоже активна.
 
+Патент референсит эту схему как "H/V Counter", она находится в правом нижнем углу диаграммы из патента, из которой и выходит куча выходов, описываемых в этом разделе. Но официальный даташит на PPU ("потёртые сканы") имеет обозначение для этого блока - "T.G.", что можно расценивать как "Timing Generator". В целом это определение соответствует тому, что можно видеть в других архитектурах видеочипов той эпохи. Название "PPU FSM" выбрано авторами. Вообще говоря, любую схему с защёлками (внутренними состояниями) можно рассматривать как автомат (FSM), например схемы управления счётчиками. Но вот эта схема - прям "FSM FSM", поэтому название "PPU FSM" прижилось.
+
 В состав H/V FSM входят следующие компоненты:
 - Схемы выдачи значений счётчика H с задержкой
 - Горизонтальная логика, ассоциированная с H декодером
@@ -12,7 +14,7 @@
 - Схема EVEN/ODD
 - Схема управления H/V счётчиками
 
-![hv_fsm_all](/BreakingNESWiki/imgstore/ppu/hv_fsm_all.jpg)
+![HV_FSM_All](/BreakingNESWiki/imgstore/ppu/HV_FSM_All.png)
 
 Управляющая логика насыщена разного рода сигналами, которые приходят и уходят практически во все возможные узлы PPU.
 
@@ -45,14 +47,14 @@
 |H0''-H5''|All|Сигналы H0-H5 задержанные двумя DLatch|
 |**Горизонтальные управляющие сигналы**|||
 |S/EV|Sprite Logic|"Start Sprite Evaluation"|
-|CLIP_O|Control Regs|"Clip Objects". 1: Не показывать левые 8 точек экрана для спрайтов. Используется для получения сигнала `CLPO`, который уходит в OAM FIFO.|
+|CLIP_O|Control Regs|"Clip Objects". 1: Не показывать левые 8 точек экрана для спрайтов. Используется для получения сигнала `CLPO`, который уходит в Obj FIFO.|
 |CLIP_B|Control Regs|"Clip Background". 1: Не показывать левые 8 точек экрана для бэкграунда. Используется для получения сигнала `/CLPB`, который уходит в Data Reader.|
-|0/HPOS|OAM FIFO|"Clear HPos". Очистить счётчики H в [спрайтовой FIFO](fifo.md) и начать работу FIFO|
+|0/HPOS|Obj FIFO|"Clear HPos". Очистить счётчики H в [спрайтовой FIFO](fifo.md) и начать работу FIFO|
 |/EVAL|Sprite Logic|"Sprite Evaluation in Progress"|
 |E/EV|Sprite Logic|"End Sprite Evaluation"|
 |I/OAM2|Sprite Logic|"Init OAM2". Инициализировать дополнительную [OAM](oam.md)|
-|PAR/O|All|"PAR for Object". Выборка тайла для объекта (спрайта).|
-|/VIS|Sprite Logic|"Not Visible". Невидимая часть сигнала (использует [спрайтовая логика](sprite_eval.md))|
+|OBJ_READ|All|Сигнал для события выборки данных спрайтов из памяти.|
+|/VIS|Sprite Logic|"Not Visible". Невидимая часть сигнала (использует [схема сравнения спрайтов](obj_eval.md))|
 |#F/NT|Data Reader, OAM Eval|0: "Fetch Name Table"|
 |F/TB|Data Reader|"Fetch Tile B"|
 |F/TA|Data Reader|"Fetch Tile A"|
@@ -103,7 +105,7 @@
 
 ![hv_fporch](/BreakingNESWiki/imgstore/ppu/hv_fporch.jpg)
 
-![hv_fsm_horz](/BreakingNESWiki/imgstore/ppu/hv_fsm_horz.jpg)
+![HPosLogic](/BreakingNESWiki/imgstore/ppu/HPosLogic.png)
 
 Логическая схема:
 
@@ -123,7 +125,7 @@
 
 Логическая схема:
 
-![hv_fsm_vert_logic](/BreakingNESWiki/imgstore/ppu/hv_fsm_vert_logic.jpg)
+![VPosLogic](/BreakingNESWiki/imgstore/ppu/VPosLogic.png)
 
 ## Обработка прерывания VBlank
 

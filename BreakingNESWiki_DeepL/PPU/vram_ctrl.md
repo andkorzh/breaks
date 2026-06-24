@@ -25,11 +25,11 @@ The circuit outputs a number of control lines to the outside:
 
 ## Logic
 
-![vram_control_logisim](/BreakingNESWiki/imgstore/ppu/vram_control_logisim.jpg)
+![vram_control_logisim](/BreakingNESWiki/imgstore/ppu/vram_control_logisim.png)
 
 ## Read Buffer (RB)
 
-Located to the right of [OAM FIFO](fifo.md). Read Buffer is associated with register $2007.
+Located to the right of [Obj FIFO](fifo.md). Read Buffer is associated with register $2007.
 
 |Transistor circuit|Logic circuit|
 |---|---|

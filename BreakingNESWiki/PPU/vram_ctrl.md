@@ -25,11 +25,11 @@
 
 ## Логическая схема
 
-![vram_control_logisim](/BreakingNESWiki/imgstore/ppu/vram_control_logisim.jpg)
+![vram_control_logisim](/BreakingNESWiki/imgstore/ppu/vram_control_logisim.png)
 
 ## Read Buffer (RB)
 
-Находится правее [OAM FIFO](fifo.md). Read Buffer ассоциирован с регистром $2007.
+Находится правее [Obj FIFO](fifo.md). Read Buffer ассоциирован с регистром $2007.
 
 |Транзисторная схема|Логическая схема|
 |---|---|
